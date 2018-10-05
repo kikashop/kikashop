@@ -49,7 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="KikaShopDbContext.cs" />
+    <Compile Include="Migrations\201810050822243_InitialDB.cs" />
+    <Compile Include="Migrations\201810050822243_InitialDB.Designer.cs">
+      <DependentUpon>201810050822243_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IReository.cs" />
+    <Compile Include="Repositories\ProductCategoryRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -60,6 +76,15 @@
       <Project>{ed483e8a-3205-446a-b169-a2b29fd427bf}</Project>
       <Name>KiKaShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KiKaShop.Model\KiKaShop.Model.csproj">
+      <Project>{4c25f57d-49c8-4472-b2f4-aab0aa671ded}</Project>
+      <Name>KiKaShop.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810050822243_InitialDB.resx">
+      <DependentUpon>201810050822243_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
