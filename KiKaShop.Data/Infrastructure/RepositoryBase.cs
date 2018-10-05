@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 namespace KiKaShop.Data.Infrastructure
 {
     //Lớp Abstract Generic toàn bộ các phương thức định nghĩa trong IRepository
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T>:IRepository<T> where T : class
     {
         #region Properties
 
