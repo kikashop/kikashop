@@ -1,4 +1,6 @@
 ﻿using KiKaShop.Model.Abstract;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace KiKaShop.Model.Models
@@ -36,5 +38,7 @@ namespace KiKaShop.Model.Models
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategory { set; get; }
+        [ForeignKey("CategoryID")]
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }
