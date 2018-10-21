@@ -24,19 +24,11 @@ namespace KiKaShop.Web.Api
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-                if (!ModelState.IsValid)
-                {
-                    response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
+            {             
                     var listCategory = _postCategoryService.GetAll();
-                
-
-                    response = request.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+                //response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+  
                 return response;
             });
         }
