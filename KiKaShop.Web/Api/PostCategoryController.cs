@@ -7,7 +7,9 @@ using System.Web.Http;
 using KiKaShop.Web.Infrastructure.Core;
 using KiKaShop.Service;
 using KiKaShop.Model.Models;
-
+using AutoMapper;
+using KiKaShop.Web.Models;
+using KiKaShop.Web.Infrastructure.Extensions;
 namespace KiKaShop.Web.Api
 {
     [RoutePrefix("api/postcategory")]
@@ -26,15 +28,17 @@ namespace KiKaShop.Web.Api
             return CreateHttpResponse(request, () =>
             {             
                     var listCategory = _postCategoryService.GetAll();
-                //response = request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
   
                 return response;
             });
         }
 
-
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
              {
@@ -45,7 +49,9 @@ namespace KiKaShop.Web.Api
                  }
                  else
                  {
-                     var category = _postCategoryService.Add(postCategory);
+                     PostCategory newPostCategory = new PostCategory();
+                     newPostCategory.UpdatePostCategory(postCategoryVm);
+                     var category = _postCategoryService.Add(newPostCategory);
                      _postCategoryService.Save();
 
                      response = request.CreateResponse(HttpStatusCode.Created, category);
@@ -53,8 +59,8 @@ namespace KiKaShop.Web.Api
                  return response;
              });
         }
-
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -65,7 +71,9 @@ namespace KiKaShop.Web.Api
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+                    _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
