@@ -18,6 +18,8 @@ namespace KiKaShop.Service
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
 
         PostCategory GetById(int id);
+        void Save();
+
     }
 
     public class PostCategoryService : IPostCategoryService
@@ -59,6 +61,10 @@ namespace KiKaShop.Service
         public void Update(PostCategory postCategory)
         {
             _postCategoryRepository.Update(postCategory);
+        }
+        public void Save()
+        {
+            _unitOfWork.Commit();
         }
     }
 }

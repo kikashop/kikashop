@@ -30,6 +30,7 @@ namespace KiKaShop.Data
         public DbSet<Tag> Tags { set; get; }
 
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
+        public DbSet<Error> Errors { set; get; }
 
         //OnBodelCreating khoi tao khi ta chay Entity Framework
         protected override void OnModelCreating(DbModelBuilder builder)
