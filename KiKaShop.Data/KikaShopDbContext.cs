@@ -1,9 +1,10 @@
 ﻿using KiKaShop.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace KiKaShop.Data
 {
-    public class KikaShopDbContext : DbContext
+    public class KikaShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public KikaShopDbContext() : base("KikaShopConnection")
         {
@@ -32,9 +33,16 @@ namespace KiKaShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static KikaShopDbContext Create()
+        {
+            return new KikaShopDbContext();
+        }
         //OnBodelCreating khoi tao khi ta chay Entity Framework
         protected override void OnModelCreating(DbModelBuilder builder)
         {
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+  
         }
     }
 }
