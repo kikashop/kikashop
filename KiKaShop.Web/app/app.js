@@ -2,7 +2,11 @@
 
 
 (function () {
-    angular.module('kikashop', ['kikashop.products', 'kikashop.common']).config(config);
+    angular.module('kikashop',
+        ['kikashop.products',
+         'kikashop.product_categories',
+         'kikashop.common'])
+        .config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 

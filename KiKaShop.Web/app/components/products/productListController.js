@@ -4,4 +4,4 @@
     function productListController() {
 
     }
-})(angular.module('kika.products'));
+})(angular.module('kikashop.products'));
