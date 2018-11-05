@@ -60,11 +60,11 @@
                                       <span ng-class="{'badge bg-red':item.Status==false, 'badge bg-green':item.Status==true}">
                                       {{item.Status | statusFilter }}</span>
                                   </td>
-                                  <td>
-                                  <button class="btn btn-success"><i  class="fa fa-plus"></i></button>
-                                      <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                  <td> <!--btnAdd btnEdit btnDelete-->
+                                      <button class="btn btn-success"><i  class="fa fa-plus"></i></button>
+                                      <button class="btn btn-primary" ui-sref="edit_product_category({id:item.ID})"><i class="fa fa-edit"></i></button>
                                       <button class="btn btn-danger"><i class="fa fa-minus"></i></button>
-                                      </span>
+                                      
                                   </td>
                               </tr>
                             <tfoot>
