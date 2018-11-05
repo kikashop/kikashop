@@ -49,7 +49,7 @@ namespace KiKaShop.Web.Infrastructure.Core
                 LogError(ex);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-            return function.Invoke();
+            return response;
         }
 
         private void LogError(Exception ex)
