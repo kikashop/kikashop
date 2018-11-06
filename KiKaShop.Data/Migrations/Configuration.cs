@@ -19,6 +19,7 @@
         protected override void Seed(KiKaShop.Data.KikaShopDbContext context)
         {
             CreateProductCategorySample(context);
+         
             /*
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new KikaShopDbContext()));
 
@@ -63,5 +64,6 @@
             }
 
         }
+       
     }
 }
