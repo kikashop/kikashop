@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('kikashop.common', ['ui.router'])
+    angular.module('kikashop.common', ['ui.router','ngBootbox'])
 })();

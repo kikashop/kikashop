@@ -63,7 +63,7 @@
                                   <td> <!--btnAdd btnEdit btnDelete-->
                                       <button class="btn btn-success"><i  class="fa fa-plus"></i></button>
                                       <button class="btn btn-primary" ui-sref="edit_product_category({id:item.ID})"><i class="fa fa-edit"></i></button>
-                                      <button class="btn btn-danger"><i class="fa fa-minus"></i></button>
+                                      <button class="btn btn-danger" ng-click="deleteProductCategory(item.ID)" ><i class="fa fa-minus"></i></button>
                                       
                                   </td>
                               </tr>
