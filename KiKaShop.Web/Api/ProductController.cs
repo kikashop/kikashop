@@ -129,7 +129,7 @@ namespace KiKaShop.Web.Api
                     var dbProduct = _productService.GetById(productVm.ID);
                     dbProduct.UpdateProduct(productVm);
                     dbProduct.UpdatedDate = DateTime.Now;
-                    newProduct.CreatedBy = User.Identity.Name;
+                    dbProduct.CreatedBy = User.Identity.Name;
                     _productService.Update(dbProduct);
                     _productService.Save();
 
