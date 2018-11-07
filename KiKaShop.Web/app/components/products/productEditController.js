@@ -4,7 +4,7 @@
     productEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService', '$stateParams'];
 
     function productEditController(apiService, $scope, notificationService, $state, commonService, $stateParams) {
-        $scope.product = { }
+        $scope.product = {};
         $scope.ckeditorOptions = {
             languague: 'vi',
             height: '200px'
@@ -16,6 +16,7 @@
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
         }
+
         function loadProductDetail() {
             apiService.get('/api/product/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.product = result.data;
@@ -24,10 +25,8 @@
                 notificationService.displayError(error.data);
             });
         }
-
         function UpdateProduct() {
-            nction AddProduct() {
-                $scope.product.MoreImages = JSON.stringify($scope.moreImages);
+            $scope.product.MoreImages = JSON.stringify($scope.moreImages)
             apiService.put('/api/product/update', $scope.product,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được cập nhật.');
@@ -51,7 +50,6 @@
                 })
             }
             finder.popup();
-
         }
         $scope.ChooseMoreImage = function () {
             var finder = new CKFinder();
@@ -63,7 +61,6 @@
             }
             finder.popup();
         }
-
         loadProductCategory();
         loadProductDetail();
     }

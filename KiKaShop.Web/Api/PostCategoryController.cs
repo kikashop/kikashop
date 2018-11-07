@@ -13,6 +13,7 @@ using KiKaShop.Web.Infrastructure.Extensions;
 namespace KiKaShop.Web.Api
 {
     [RoutePrefix("api/postcategory")]
+    [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;
