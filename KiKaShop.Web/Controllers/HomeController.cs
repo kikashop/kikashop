@@ -13,17 +13,32 @@ namespace KiKaShop.Web.Controllers
     public class HomeController : Controller
     {
         IProductCategoryService _productCategoryService;
+        IProductService _productService;
         ICommmonService _commonService;
 
-        public HomeController(IProductCategoryService productCategoryService, ICommmonService commonService)
+        public HomeController(IProductCategoryService productCategoryService, ICommmonService commonService,
+                IProductService productService)
         {
             _productCategoryService = productCategoryService;
             _commonService = commonService;
+            _productService = productService;
         }
 
         public ActionResult Index()
         {
-            return View();
+            var slideModel = _commonService.GetSlides();
+            var slideViewModel = Mapper.Map<IEnumerable< Slide>, IEnumerable<SlideViewModel>>(slideModel);
+            var homeViewModel = new HomeViewModel();
+            homeViewModel.Slides = slideViewModel;
+
+
+            var lastestProductModel = _productService.GetLastest(3);
+            var topSaleProductModel = _productService.GetHotProduct(3);
+            var lastestProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(lastestProductModel);
+            var topSaleProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(topSaleProductModel);
+            homeViewModel.LastestProducts = lastestProductViewModel;
+            homeViewModel.TopSaleProducts = topSaleProductViewModel;
+            return View(homeViewModel);
         }
 
         public ActionResult About()
