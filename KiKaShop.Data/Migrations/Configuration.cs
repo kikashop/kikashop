@@ -1,5 +1,6 @@
 ﻿namespace KiKaShop.Data.Migrations
 {
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
@@ -64,6 +65,7 @@
             }
 
         }
+
        
     }
 }
