@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201811080908247_AddContentTodboSlide.Designer.cs">
       <DependentUpon>201811080908247_AddContentTodboSlide.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811091442244_AddQuantityforProduct.cs" />
+    <Compile Include="Migrations\201811091442244_AddQuantityforProduct.Designer.cs">
+      <DependentUpon>201811091442244_AddQuantityforProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811080908247_AddContentTodboSlide.resx">
       <DependentUpon>201811080908247_AddContentTodboSlide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811091442244_AddQuantityforProduct.resx">
+      <DependentUpon>201811091442244_AddQuantityforProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

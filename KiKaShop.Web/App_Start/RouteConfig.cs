@@ -41,8 +41,8 @@ namespace KiKaShop.Web
 
             routes.MapRoute(
            name: "Product",
-           url: "{alias}.p-{id}.html",
-           defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
+           url: "{alias}.p-{productId}.html",
+           defaults: new { controller = "Product", action = "Detail", productId = UrlParameter.Optional },
            namespaces: new string[] { "KiKaShop.Web.Controllers" }
                 );
             //The default is always at the bottom -Kim
