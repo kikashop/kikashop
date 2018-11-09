@@ -72,7 +72,7 @@ ul.support li a {
 }
 .header-bottom-right{
 	float: right;
-	width: 37%;
+	width: 42%;
 	text-align: center;
 	padding-top:1.7em;
 }
@@ -402,6 +402,7 @@ width: 49%;
 }
 .grid-chain-bottom {
 	border-top: 1px solid #ddd;
+    height:130px;
 }
 .latest-product,.dolor-grid{
 	float:left;
@@ -1211,7 +1212,7 @@ select.in-drop {
 }
 .in-of{
 	color:#fff;
-	background:#F97E76;
+	background:#131212;
 	outline:none;
 	
 }

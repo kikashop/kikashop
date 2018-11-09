@@ -14,9 +14,11 @@ namespace KiKaShop.Web.Infrastructure.Core
             {
                 return (Items != null) ? Items.Count() : 0;
             }
+           
         }
         public int TotalPages { get; set; }
         public int TotalCount { get; set; }
+        public int MaxPage { get; set; }
         public IEnumerable<T> Items { get; set; }
     }
 }

@@ -4,80 +4,47 @@
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 @section footerJS{
-<script src="/Assets/client/js/jquery.wmuSlider.js"></script>
+    <script src="/Assets/client/js/jquery.wmuSlider.js"></script>
     <script>
-	      	$('.example1').wmuSlider();
+        $('.example1').wmuSlider();
     </script>
-    }
+}
 
 
 <div class="shoes-grid">
-  
+
     <div class="wrap-in">
         <div class="wmuSlider example1 slide-grid">
             <div class="wmuSliderWrapper">
                 @foreach (var slide in Model.Slides)
                 {
-                    <article style="position: absolute; width: 100%; opacity: 0;">
-                        <div class="banner-matter">
-                            <div class="col-md-5 banner-bag">
-                                <img class="img-responsive " src="@slide.Image" alt="@slide.Name" />
-                            </div>
-                            <div class="col-md-7 banner-off">
-                                     @Html.Raw(slide.Content)
-                             </div>
-
-                            <div class="clearfix"> </div>
+                <article style="position: absolute; width: 100%; opacity: 0;">
+                    <div class="banner-matter">
+                        <div class="col-md-5 banner-bag">
+                            <img class="img-responsive " src="@slide.Image" alt="@slide.Name" />
+                        </div>
+                        <div class="col-md-7 banner-off">
+                            @Html.Raw(slide.Content)
                         </div>
 
-                    </article>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                </article>
                 }
-               
+
 
             </div>
-    
-    <ul class="wmuSliderPagination">
-        @for (int i = 0; i < Model.Slides.Count(); i++)
+
+            <ul class="wmuSliderPagination">
+                @for (int i = 0; i < Model.Slides.Count(); i++)
         {
-            <li><a href="#" class="">i</a></li>
+                <li><a href="#" class="">i</a></li>
         }
-    </ul>
- 
-</div>
+            </ul>
 
-@section homeProducts{
-    <!---->
-  @*<div class="shoes-grid-left">
-        <a href="single.html">
-            <div class="col-md-6 con-sed-grid">
-
-                <div class="elit-grid">
-
-                    <h4>consectetur  elit</h4>
-                    <label>FOR ALL PURCHASE VALUE</label>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-                    <span class="on-get">GET NOW</span>
-                </div>
-                <img class="img-responsive shoe-left" src="/Assets/client/images/sh.jpg" alt=" " />
-
-                <div class="clearfix"> </div>
-
-            </div>
-        </a>
-        <a href="single.html">
-            <div class="col-md-6 con-sed-grid sed-left-top">
-                <div class="elit-grid">
-                    <h4>consectetur  elit</h4>
-                    <label>FOR ALL PURCHASE VALUE</label>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-                    <span class="on-get">GET NOW</span>
-                </div>
-                <img class="img-responsive shoe-left" src="/Assets/client/images/wa.jpg" alt=" " />
-
-                <div class="clearfix"> </div>
-            </div>
-        </a>
-    </div> *@
+        </div>
+    </div>
     <div class="products">
         <h5 class="latest-product">SẢN PHẨM MỚI NHẤT</h5>
         <a class="view-all" href="san-pham.html">Xem tất cả<span> </span></a>
@@ -89,8 +56,8 @@
             <div class="col-md-4 chain-grid grid-top-chain">
                 @*<img class="img-responsive chain" src="/Assets/client/images/bo.jpg" alt=" " />*@
                 <a href="@url">
-                   <img class="img-responsive chain" src="@product.Image" alt="@product.Name " style="max-width:100%;max-height:300px" />      
-                  </a>
+                    <img class="img-responsive chain" src="@product.Image" alt="@product.Name " style="max-width:100%;height:300px" />
+                </a>
                 <span class="star"> </span>
                 <div class="grid-chain-bottom">
                     <h6><a href="@url">@product.Name</a></h6>
@@ -99,9 +66,13 @@
                             @if (product.PromotionPrice.HasValue)
                             {
                                 <span class="actual">@product.PromotionPrice.Value.ToString("N0")</span>
+                                <span class="reducedfrom">@product.Price.ToString("N0")</span>
                             }
-                           
-                            <span class="reducedfrom">@product.Price.ToString("N0")</span>
+                            else
+                            {
+                                <span class="actual">@product.Price.ToString("N0")</span>
+                            }
+
                             <span class="rating">
                                 <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
                                 <label for="rating-input-1-5" class="rating-star1"> </label>
@@ -121,7 +92,7 @@
                 </div>
             </div>
     }
-     
+
         <div class="clearfix"> </div>
     </div>
     <div class="products">
@@ -133,18 +104,21 @@
         {
             var url = "/" + product.Alias + ".p-" + product.ID + ".html";
             <div class="col-md-4 chain-grid grid-top-chain">
-                <a href="@url"><img class="img-responsive chain" src="@product.Image" alt="@product.Name " style="max-width:100%;max-height:300px" />     </a>
+                <a href="@url"><img class="img-responsive chain" src="@product.Image" alt="@product.Name " style="max-width:100%;height:300px" />     </a>
                 <span class="star"> </span>
                 <div class="grid-chain-bottom">
                     <h6><a href="@url">@product.Name</a></h6>
                     <div class="star-price">
                         <div class="dolor-grid">
-                            @if (product.PromotionPrice.HasValue)
-                            {
-                                <span class="actual">@product.PromotionPrice.Value.ToString("N0")</span>
-                            }
-
-                            <span class="reducedfrom">@product.Price.ToString("N0")</span>
+                           @if (product.PromotionPrice.HasValue)
+                           {
+                            <span class="actual">@product.PromotionPrice.Value.ToString("N0")</span>
+                                <span class="reducedfrom">@product.Price.ToString("N0")</span>
+                           }
+                           else
+                           {
+                            <span class="actual">@product.Price.ToString("N0")</span>
+                           }
                             <span class="rating">
                                 <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
                                 <label for="rating-input-1-5" class="rating-star1"> </label>
@@ -167,5 +141,4 @@
         <div class="clearfix"> </div>
     </div>
 
-
-}
+</div>

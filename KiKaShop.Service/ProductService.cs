@@ -24,6 +24,8 @@ namespace KiKaShop.Service
 
         IEnumerable<Product> GetHotProduct(int top);
 
+        IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId,int page, int pageSize,out int totalRow);
+
         Product GetById(int id);
 
         void Save();
@@ -139,6 +141,15 @@ namespace KiKaShop.Service
         public IEnumerable<Product> GetHotProduct(int top)
         {
             return _productRepository.GetMulti(x => x.Status && x.HotFlag==true).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId, int page, int pageSize, out int totalRow )
+        {
+            var query = _productRepository.GetMulti(x => x.Status && x.CategoryID == categoryId);
+            totalRow = query.Count();
+
+            //VD: page=3, pageSize=20: Lấy từ bản ghi 40 - 59
+            return query.Skip((page - 1)*pageSize).Take(pageSize);
         }
     }
 }
