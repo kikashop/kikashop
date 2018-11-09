@@ -15,6 +15,12 @@ namespace KiKaShop.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+       name: "Search",
+       url: "tim-kiem.html",
+       defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
+       namespaces: new string[] { "KiKaShop.Web.Controllers" }
+            );
+            routes.MapRoute(
        name: "Login",
        url: "dang-nhap.html",
        defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
